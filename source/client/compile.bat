@@ -1,0 +1,1 @@
+pyinstaller -n SockTerm --onefile --distpath . --icon icon.ico client.py

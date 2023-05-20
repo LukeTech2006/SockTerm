@@ -1,0 +1,1 @@
+pyinstaller -n SockServe --onefile --distpath . --icon icon.ico echo.py

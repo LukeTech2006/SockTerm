@@ -1,5 +1,5 @@
 from blessed import Terminal; from suffixes import *; from pwinput import pwinput
-import socket, pickle
+import socket, pickle, sys
 term = Terminal()
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((socket.gethostname(), 60000))
@@ -27,7 +27,7 @@ while True:
     inputtype = 1
     if recv[-4:] == EOF:
         print(recv[:-4])
-        quit()
+        sys.exit(0)
     elif recv[-4:] == ACK:
         s.send(pickle.dumps("ACK"))
         print(recv[:-4])

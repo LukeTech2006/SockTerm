@@ -1,4 +1,4 @@
-import socket, blessed, pickle, time, session, json
+import socket, blessed, pickle, time, session, json, sys
 from _thread import *; from suffixes import *; from hashlib import sha256
 term = blessed.Terminal()
 configuredport = 60000
@@ -16,7 +16,7 @@ def commandHandler(uid: int, command: str, socket: socket):
         print(term.lightblue + f"[SERVER/Info] Client #{uid} closed the connection." + term.normal)
         socket.send(pickle.dumps(term.orange + "Connection closed. Goodbye!" + term.normal + EOF))
         currentUsers[uid] = None
-        quit()
+        sys.exit(0)
     elif command == "WHOAMI":
         try: feedback = pickle.dumps(term.lightblue + f"You are Client #{uid} and are currently logged in as {currentUsers[uid][0]}." + term.normal + ACK)
         except TypeError: feedback = pickle.dumps(term.lightblue + f"You are Client #{uid} and are currently not logged in." + term.normal + ACK)
