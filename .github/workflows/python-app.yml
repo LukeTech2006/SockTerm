@@ -38,4 +38,5 @@ jobs:
         flake8 ./source/client --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        pytest ./source/client/client.py
+        pytest ./source/server/echo.py
