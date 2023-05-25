@@ -27,7 +27,7 @@ def commandHandler(uid: int, command: str, socket: socket):
             if currentUsers[uid] != None: return pickle.dumps(term.red + f"You are already logged in!" + term.normal + ACK)
             socket.send(pickle.dumps(term.lightblue + f"Beginning login procedure." + CUI + "Username: "))
             uname = pickle.loads(socket.recv(1024))
-            socket.send(pickle.dumps(term.lightblue + PUI + term.move_up + "Password: "))
+            socket.send(pickle.dumps(term.lightblue + PUI + "Password: "))
             pcode = sha256(pickle.loads(socket.recv(1024)).encode('utf-8')).hexdigest()
             if availUsers[uname] == pcode:
                 feedback = pickle.dumps(term.green + f"Welcome, {uname}!" + term.normal + ACK)
