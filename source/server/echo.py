@@ -41,7 +41,7 @@ def commandHandler(uid: int, command: str, socket: socket):
 
     return feedback
 
-def clientHandler(s, a):
+def clientHandler(s: socket, a: tuple):
     global term
     uid = abs(hash(a))
     currentUsers[uid] = None
